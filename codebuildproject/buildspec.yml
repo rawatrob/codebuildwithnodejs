@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+       android: 28
+       php: 7.3
+    commands:
+        - pip install python-dateutil
+        
+        - echo Downloading JUnit JAR file...
+  pre_build:
+    commands:
+        - echo Creating directories...  
+  build:
+    commands:
+        - chmod 755 run.sh
+        - bash ./run.sh
+        - echo Build started on `date` 
+    commands:
+        - echo Build completed on `date`
+artifacts:
+  files:
+        - appypie/dist/*.apk
